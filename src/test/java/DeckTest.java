@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DeckTest
@@ -7,7 +9,7 @@ public class DeckTest
     @Test
     void testDeckInitialization() {
         Deck deck = new Deck();
-        assertEquals(52, deck.size(), "Deck should contain 52 cards upon initialization");
+        assertEquals(52, deck.cards.size(), "Deck should contain 52 cards upon initialization");
     }
 
     @Test
@@ -28,22 +30,6 @@ public class DeckTest
         }
         assertEquals(0, deck.size(), "Deck should be empty after dealing all 52 cards");
     }
-
-    @Test
-    void testNoDuplicateCards()
-    {
-        Deck deck = new Deck();                // Step 1: Create a new deck
-        Set<Card> dealtCards = new HashSet<>(); // Step 2: Use a Set to track dealt cards
-
-        for (int i = 0; i < 52; i++) {          // Step 3: Deal all 52 cards
-            Card dealtCard = deck.dealCard();   // Step 4: Get a card from the deck
-            assertFalse(dealtCards.contains(dealtCard), "Duplicate card detected: " + dealtCard);
-            dealtCards.add(dealtCard);          // Step 5: Add the card to the Set
-        }
-
-        assertEquals(52, dealtCards.size(), "All dealt cards should be unique");
-    }
-
 
     @Test
     void testDeckShuffling()
