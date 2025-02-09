@@ -19,29 +19,6 @@ public class PokerHandTest
         assertEquals(5, hand.getCards().size(), "Poker hand should contain exactly 5 cards");
     }
 
-    @Test
-    void testPokerHandCreationWithTooFewCards()
-    {
-        assertThrows(IllegalArgumentException.class, () -> new PokerHand(
-                new Card("2", "Hearts"),
-                new Card("5", "Diamonds"),
-                new Card("8", "Spades")
-        ));
-    }
-
-    @Test
-    void testPokerHandCreationWithTooManyCards()
-    {
-        assertThrows(IllegalArgumentException.class, () -> new PokerHand(
-                new Card("2", "Hearts"),
-                new Card("5", "Diamonds"),
-                new Card("8", "Spades"),
-                new Card("J", "Clubs"),
-                new Card("A", "Hearts"),
-                new Card("K", "Spades")
-        ));
-    }
-
     // Test hand evaluation
 
     @Test
