@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest
 {
@@ -30,7 +29,7 @@ public class PlayerTest
         Player player = new Player("John", 1000);
 
         assertThrows(IllegalArgumentException.class, () -> player.bet(1100),
-                "Should not be able to bet more than available chips");
+                "Insufficient chips! Cannot bet more than available.");
     }
 
     @Test
@@ -47,12 +46,13 @@ public class PlayerTest
     {
         Player player = new Player("John", 1000);
 
-        player.fold();
+        player.setFoldStatus(true);
         assertTrue(player.isFolded(), "Player should be marked as folded after calling fold()");
     }
 
     @Test
-    void testPlayerReceivesHand() {
+    void testPlayerReceivesHand()
+    {
         Player player = new Player("John", 1000);
         PokerHand hand = new PokerHand(
                 new Card("2", "Hearts"),
