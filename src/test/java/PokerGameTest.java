@@ -91,11 +91,6 @@ public class PokerGameTest
         assertThrows(IllegalArgumentException.class, () -> game.exchangeCards(player, cardsToReplace),
                 "Should not allow exchanging more than 3 cards");
     }
-
-
-
-
-
 }
 
 
