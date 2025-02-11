@@ -22,6 +22,14 @@ public class PokerGame
         this.pot = 0;
     }
 
+    public List<Player> getPlayers() {
+        return this.players;
+    }
+
+    public Deck getDeck() {
+        return this.deck;
+    }
+
     public void dealPlayerCards()
     {
         for (Player player : players)
@@ -31,6 +39,26 @@ public class PokerGame
                 Card card = this.deck.dealCard();
             }
         }
+    }
+
+    public int placeBet(Player player, int amount)
+    {
+        return 0;
+    }
+
+    public void foldPlayer(Player player)
+    {
+
+    }
+
+    public void exchangeCards(Player player, List<Card> cardsToReplace)
+    {
+
+    }
+
+    public Player determineWinner()
+    {
+        return null;
     }
 
 
