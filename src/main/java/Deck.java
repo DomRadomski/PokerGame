@@ -6,7 +6,7 @@ public class Deck
 {
     protected List<Card> cards = new ArrayList<>();
     private String[] suits = {"Hearts", "Diamonds", "Spades", "Clubs"} ;
-    private String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+    private String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
     public Deck()
     {

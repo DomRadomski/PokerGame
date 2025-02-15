@@ -39,10 +39,15 @@ public class PokerHand
     }
 
 
-    public PokerHand(Card card1, Card card2, Card card3, Card card4, Card card5)
+    public PokerHand(Card[] cards)
     {
-        Card[] unsortedCards = {card1, card2, card3, card4, card5};
-        this.cards = Arrays.asList(unsortedCards);
+
+        this.cards = Arrays.asList(cards);
+        this.cards.sort(Comparator.comparingInt(card -> RANK_VALUES.get(card.getRank())));
+    }
+
+    public void sortHand()
+    {
         this.cards.sort(Comparator.comparingInt(card -> RANK_VALUES.get(card.getRank())));
     }
 
@@ -50,6 +55,12 @@ public class PokerHand
     {
         return this.cards;
     }
+
+    public void changeCard(Deck deck, int index)
+    {
+        this.cards.set(index, deck.dealCard());
+    }
+
 
     public int CardRank(int index)
     {
@@ -242,20 +253,20 @@ public class PokerHand
     }
 
     // returns true if player hand is the winner
-    public static int compare(PokerHand playerHand, PokerHand otherHand)
+    public int compareHands(PokerHand otherHand)
     {
-        if (HAND_RANKS.get(playerHand.evaluateHand().getKey()) > HAND_RANKS.get(otherHand.evaluateHand().getKey()))
+        if (HAND_RANKS.get(evaluateHand().getKey()) > HAND_RANKS.get(otherHand.evaluateHand().getKey()))
         {
             return 1;
         }
 
-        else if (HAND_RANKS.get(playerHand.evaluateHand().getKey()) == HAND_RANKS.get(otherHand.evaluateHand().getKey()))
+        else if (HAND_RANKS.get(evaluateHand().getKey()) == HAND_RANKS.get(otherHand.evaluateHand().getKey()))
         {
-            if (RANK_VALUES.get(playerHand.evaluateHand().getValue()) > RANK_VALUES.get(otherHand.evaluateHand().getValue()))
+            if (RANK_VALUES.get(evaluateHand().getValue()) > RANK_VALUES.get(otherHand.evaluateHand().getValue()))
             {
                 return 1;
             }
-            else if (RANK_VALUES.get(playerHand.evaluateHand().getValue()) == RANK_VALUES.get(otherHand.evaluateHand().getValue()))
+            else if (RANK_VALUES.get(evaluateHand().getValue()) == RANK_VALUES.get(otherHand.evaluateHand().getValue()))
             {
                 return 0;
             }
@@ -273,7 +284,7 @@ public class PokerHand
 
     public static void main(String[] args)
     {
-        PokerHand hand2 = new PokerHand(
+        /*PokerHand hand2 = new PokerHand(
                 new Card("A", "Clubs"),
                 new Card("A", "Clubs"),
                 new Card("A", "Clubs"),
@@ -289,7 +300,7 @@ public class PokerHand
                 new Card("J", "hearts")
         );
 
-        System.out.println(hand2.compare(hand2, hand1));
+        System.out.println(hand2.compare(hand2, hand1));*/
     }
 
 }
